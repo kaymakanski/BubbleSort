@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorting Algorithms</title>
+    <script src="jquery-3.4.1.min.js" ></script>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <div class="center">
+        <input id="toSort" type="text" placeholder="Please input the integers, which you would like to sort." />
+
+        <button id="sortButton" type="button" onclick="sort()">Sort</button>
+
+        <button id="clearButton" type="button" onclick="clearSort()">Clear</button>
+    </div>
+
+    <div class="center output" id="sortedOutput">
+
+    </div>
+
+    <script>
+        let input = document.getElementById("toSort");
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+              event.preventDefault();
+              document.getElementById("sortButton").click();
+            }
+        });
+
+        function clearSort() {
+          $("#sortedOutput").empty();
+        }
+
+        function sort() {
+            let toSort = $("#toSort").val();
+            let result = "<div class='newResult'><div class='sortingHeader'>Sorting Elements: " + toSort + " With Bubble Sort</div>";
+
+            $.getJSON( "http://localhost:8080/bubblesort?arrayToSort=" + toSort, function (data) {
+                for (i = 0; i < data.length; i++) {
+                    result += "<div class='move'>";
+                      result += "<div class='description'>Step #" + (i+1) + ": " + data[i].description + "</div>";
+                      result += "<div class='line'>";
+                      for(j = 0; j < data[i].arrayOnStart.length; j++) {
+                        let clazz = "elementNotSelected";
+                        if(data[i].position1 == j || data[i].position2 == j) {
+                          clazz = "elementSelected";
+                        }
+
+                        result += "<span class='"+clazz+"'>"+data[i].arrayOnStart[j]+"</span>";
+                      }
+                    result += "</div></div>";
+                }
+
+                result += "</div>";
+                $("#sortedOutput").prepend(result);
+            });
+        }
+    </script>
+</body>
+</html>

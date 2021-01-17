@@ -1,0 +1,58 @@
+div.center {
+  margin: auto;
+  width: 75%;
+  border: 1px solid green;
+  padding: 10px;
+}
+
+span.elementSelected {
+  border: 1px solid #ff0000;
+  padding: 10px;
+  margin: 10px;
+  width: 55px;
+}
+
+span.elementNotSelected {
+  border: 0px;
+  padding: 11px;
+  margin: 10px;
+  width: 55px;
+}
+
+div.line {
+    width: 90%;
+    max-width: 90%;
+    margin: 25px;
+}
+
+div.output {
+  border: 0px;
+}
+
+div.newResult {
+  margin-top: 20px;
+  border: 3px solid green;
+  padding: 30px;
+}
+
+div.sortingHeader {
+  margin-top: 5px;
+  font-size: 150%;
+  text-align: center;
+}
+
+div.description {
+  text-decoration: underline;
+  text-decoration-color: green;
+  text-align: left;
+}
+
+input {
+    width : 65%;
+}
+
+button {
+    margin: auto;
+    width: 15%;
+    padding-left: 10px;
+}
